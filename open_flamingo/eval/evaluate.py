@@ -12,22 +12,25 @@ import numpy as np
 import torch
 
 
-from coco_metric import compute_cider, postprocess_captioning_generation
-from eval_datasets import CaptionDataset, VQADataset, ImageNetDataset
+from open_flamingo.eval.coco_metric import (
+    compute_cider,
+    postprocess_captioning_generation,
+)
+from open_flamingo.eval.eval_datasets import CaptionDataset, VQADataset, ImageNetDataset
 from tqdm import tqdm
 
 
-from eval_datasets import VQADataset, ImageNetDataset
+from open_flamingo.eval.eval_datasets import VQADataset, ImageNetDataset
 from open_flamingo.eval.imagenet_utils import (
     openai_imagenet_classnames,
     IMAGENET_1K_CLASS_ID_TO_LABEL,
 )
 
-from eval_model import BaseEvalModel
+from open_flamingo.eval.eval_model import BaseEvalModel
 
 from open_flamingo.eval.ok_vqa_utils import postprocess_ok_vqa_generation
 from open_flamingo.src.flamingo import Flamingo
-from vqa_metric import compute_vqa_accuracy, postprocess_vqa_generation
+from open_flamingo.eval.vqa_metric import compute_vqa_accuracy, postprocess_vqa_generation
 
 parser = argparse.ArgumentParser()
 parser.add_argument(
