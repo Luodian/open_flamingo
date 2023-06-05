@@ -9,16 +9,8 @@
             "justMyCode": true,
             "cwd": "${workspaceFolder}",
             "args": [
-                "--lm_path",
-                "luodian/llama-7b-hf",
-                "--lm_tokenizer_path",
-                "luodian/llama-7b-hf",
-                "--vision_encoder_path",
-                "ViT-L-14",
-                "--vision_encoder_pretrained",
-                "openai",
-                "--checkpoint_path",
-                "/home/v-boli7/azure_storage/models/openflamingo/checkpoint.pt",
+                "--model",
+                "otter",
                 "--cross_attn_every_n_layers",
                 "4",
                 "--device",
@@ -45,13 +37,11 @@
                 "--num_samples",
                 "5000",
                 "--shots",
-                "0",
-                "4",
                 "8",
                 "--num_trials",
                 "1",
                 "--batch_size",
-                "16"
+                "32"
             ]
         }
     ]

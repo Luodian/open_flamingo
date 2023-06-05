@@ -2,7 +2,7 @@ from typing import List
 
 from PIL import Image
 import torch
-
+from transformers import CLIPImageProcessor
 from open_flamingo.eval.eval_model import BaseEvalModel
 from open_flamingo.src.factory import create_model_and_transforms
 from .modeling_otter import OtterForConditionalGeneration
@@ -19,10 +19,11 @@ class EvalModel(BaseEvalModel):
     def __init__(self, model_args):
         model_args["device"] = int(model_args["device"])
         self.device = model_args["device"] if model_args["device"] >= 0 else "cpu"
-        self.model_path = model_args.model_path
-        self.model = OtterForConditionalGeneration.from_pretrained(self.model_path)
+        model_path = "/home/v-boli7/azure_storage/otter/checkpoints/otter9B_LA_incontext2"
+        self.model = OtterForConditionalGeneration.from_pretrained(model_path)
         self.tokenizer = self.model.text_tokenizer
         self.tokenizer.padding_side = 'left'
+        self.image_processor = CLIPImageProcessor()
 
     def _prepare_images(self, batch: List[List[torch.Tensor]]) -> torch.Tensor:
         """Preprocess images and stack them.

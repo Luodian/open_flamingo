@@ -297,7 +297,6 @@ parser.add_argument(
     default="open_flamingo",
 )
 
-
 def main():
     args, leftovers = parser.parse_known_args()
     module = importlib.import_module(f"open_flamingo.eval.models.{args.model}")
@@ -307,7 +306,7 @@ def main():
     }
     eval_model = module.EvalModel(model_args)
 
-    if args.model != "open_flamingo" and args.shots != [0]:
+    if args.model != "open_flamingo" and args.model != "otter" and args.shots != [0]:
         raise ValueError("Only 0 shot eval is supported for non-open_flamingo models")
 
     if len(args.trial_seeds) != args.num_trials:
